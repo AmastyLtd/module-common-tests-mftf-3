@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="SortGridByDescendingActionGroup">
+        <arguments>
+            <argument name="urlGrid"/>
+            <argument name="columnName"/>
+        </arguments>
+        <amOnPage url="{{urlGrid}}" stepKey="amOnGridPage"/>
+        <conditionalClick selector="{{AdminGridsSection.GridColumnTitle(columnName)}}"
+                          dependentSelector="{{AdminGridsSection.DefSortingState(columnName)}}" visible="true"
+                          stepKey="clickToAttemptSortByDesc"/>
+        <waitForLoadingMaskToDisappear stepKey="waitForFirstSortDesToFinish"/>
+        <!-- Conditional Click again in case it goes from default state to ascending on first click -->
+        <conditionalClick selector="{{AdminGridsSection.GridColumnTitle(columnName)}}"
+                          dependentSelector="{{AdminGridsSection.DefSortingState(columnName)}}" visible="true"
+                          stepKey="secondClickToAttemptSortByDesc"/>
+        <waitForLoadingMaskToDisappear stepKey="waitForSecondSortDescToFinish"/>
+    </actionGroup>
+</actionGroups>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmDefCreateShipmentAndInvoiceOnAdminAreaTest" extends="CreateInvoiceWithShipmentAndCheckInvoicedOrderTest">
+        <annotations>
+            <features value="Create Invoice and Shipment"/>
+            <stories value="Create Invoice and Shipment via Admin"/>
+            <title value="Check Create Invoice and Shipment on the Admin Area"/>
+            <description value="Check Create Invoice and Shipment on the Admin Area with Simple Product"/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="AmDef-29"/>
+            <group value="Amasty"/>
+            <group value="AdminCheckout"/>
+            <group value="AmDef"/>
+            <group value="AmDefCE"/>
+            <group value="AmDefAdmin"/>
+        </annotations>
+
+        <before>
+            <!-- Create Data for Test -->
+            <createData entity="CommonCustomerArizona" stepKey="createCustomer" />
+            <createData entity="SimpleProductByDrivenBackpack" stepKey="createSimpleProduct" />
+        </before>
+        <after>
+            <remove keyForRemoval="customerLogoutStorefront" />
+        </after>
+
+        <actionGroup ref="SelectCheckMoneyPaymentMethodActionGroup" after="waitForShippingMethodLoad"
+                     stepKey="selectPaymentMethod"/>
+        <conditionalClick selector="//aside[@data-role='modal'][last()]//button[@class='action-primary']"
+                          dependentSelector="//aside[@data-role='modal'][last()]//button[@class='action-primary']"
+                          visible="true" before="seeOrderGraphImage" stepKey="acceptModal" />
+        <waitForPageLoad after="acceptModal" stepKey="waitForLoadAccept"/>
+        <fillField selector="{{AdminOrderInvoicesTabSection.amountFrom}}" userInput="41.00" stepKey="fillAmountFromFilter"/>
+        <fillField selector="{{AdminOrderInvoicesTabSection.amountTo}}" userInput="41.00" stepKey="fillAmountToFilter"/>
+        <see selector="{{StorefrontOrderInvoicesSection.grandTotalPrice}}" userInput="41.00" stepKey="seePrice"/>
+    </test>
+</tests>

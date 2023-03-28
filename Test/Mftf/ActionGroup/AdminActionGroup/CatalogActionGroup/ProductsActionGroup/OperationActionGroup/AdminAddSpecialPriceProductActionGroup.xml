@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="AdminAddSpecialPriceProductActionGroup" extends="AdminFindAndOpenCreatedProductActionGroup">
+        <arguments>
+            <argument name="specialPrice"/>
+        </arguments>
+        <scrollTo selector="{{AdminProductSection.Status}}" stepKey="scrollToAdvancedPricingSetting"/>
+        <waitForPageLoad stepKey="waitForPageLoadAfterScroll"/>
+        <click selector="{{AdminProductSection.AdvancedPricing}}" stepKey="openAdvancedPricingSetting"/>
+        <waitForPageLoad stepKey="waitForLoadPopUp"/>
+        <fillField selector="{{AdminProductSection.SpecialPrice}}" userInput="{{specialPrice}}"
+                   stepKey="enterSpecialPrice"/>
+        <click selector="{{AdminProductSection.CloseAdvancedPricing}}" stepKey="closeAdvancedPricingSetting"/>
+        <waitForPageLoad stepKey="waitForPageLoadAfterClosePopup"/>
+        <click selector="{{AdminProductSection.Save}}" stepKey="saveProductSetting"/>
+        <waitForPageLoad stepKey="waitForPageLoadAfterSaveProduct"/>
+    </actionGroup>
+</actionGroups>

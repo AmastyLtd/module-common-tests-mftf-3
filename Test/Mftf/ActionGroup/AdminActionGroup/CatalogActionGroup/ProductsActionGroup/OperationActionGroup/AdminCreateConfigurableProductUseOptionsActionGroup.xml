@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="AdminCreateConfigurableProductActionGroup"
+                 extends="CreateConfigurableProductActionGroup">
+        <resizeWindow width="1680" height="1050" before="clickOnApplySingleQuantityToEachSku" stepKey="resize" />
+        <click selector="{{AdminProductSection.ConfigApplySingle}}" stepKey="clickOnApplySingleQuantityToEachSku" />
+        <scrollToTopOfPage before="clickOnCreateConfigurations" stepKey="scrollToTopOfPageBeforeCreateConfiguration"/>
+    </actionGroup>
+</actionGroups>

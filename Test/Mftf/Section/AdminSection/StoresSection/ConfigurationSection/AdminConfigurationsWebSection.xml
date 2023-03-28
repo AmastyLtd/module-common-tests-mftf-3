@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+
+    <section name="AdminConfigurationsWebSection">
+        <element name="BaseUrlsTab" type="button" selector="//a[@id='web_unsecure-head']"/>
+        <element name="SecureBaseUrlsTab" type="button" selector="//a[@id='web_secure-head']"/>
+        <element name="BaseUrl" type="input" selector="//input[@id='web_unsecure_base_url']"/>
+        <element name="SecureBaseUrl" type="input" selector="//input[@id='web_secure_base_url']"/>
+        <element name="BaseUrlUseDefault" type="button" selector="//input[@id='web_unsecure_base_url_inherit']"/>
+        <element name="SecureBaseUrlUseDefault" type="button" selector="//input[@id='web_secure_base_url_inherit']"/>
+    </section>
+</sections>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="AdminConfigurationSettingsForCalculationTaxActionGroup">
+        <arguments>
+            <argument name="calculationTax" defaultValue="taxExcludeCatalogAndShipping" />
+        </arguments>
+        <magentoCLI command="config:set tax/classes/shipping_tax_class {{calculationTax.taxClassForShipping}}"
+                    stepKey="shippingTaxClass"/>
+        <magentoCLI command="config:set tax/classes/default_product_tax_class {{calculationTax.taxClassForProduct}}"
+                    stepKey="productTaxClass"/>
+        <magentoCLI command="config:set tax/calculation/price_includes_tax {{calculationTax.calculationCatalogPrices}}"
+                    stepKey="catalogCalculationPricesTax"/>
+        <magentoCLI command="config:set tax/calculation/shipping_includes_tax {{calculationTax.calculationShippingPrices}}"
+                    stepKey="catalogCalculationShippingTax"/>
+        <magentoCLI command="config:set tax/calculation/discount_tax {{calculationTax.calculationDiscountTax}}"
+                    stepKey="applyDiscountOnPricesTax"/>
+        <magentoCLI command="config:set tax/calculation/apply_after_discount {{calculationTax.calculationApplyTaxWithDiscount}}"
+                    stepKey="applyCustomerTaxAfterDiscount"/>
+        <magentoCLI command="config:set tax/display/type {{calculationTax.displayCatalogPrices}}"
+                    stepKey="catalogPriceDisplayTax"/>
+        <magentoCLI command="config:set tax/display/shipping {{calculationTax.displayShippingPrices}}"
+                    stepKey="shippingPriceDisplayTax"/>
+        <magentoCLI command="config:set tax/cart_display/price {{calculationTax.displayCartPrices}}"
+                    stepKey="cartPricesTax"/>
+        <magentoCLI command="config:set tax/cart_display/subtotal {{calculationTax.displayCartSubtotal}}"
+                    stepKey="cartSubtotalTax"/>
+        <magentoCLI command="config:set tax/sales_display/price {{calculationTax.displayOrderPrices}}"
+                    stepKey="ordersPricesTax"/>
+        <magentoCLI command="config:set tax/sales_display/subtotal {{calculationTax.displayOrderSubtotal}}"
+                    stepKey="ordersSubtotalTax"/>
+    </actionGroup>
+</actionGroups>

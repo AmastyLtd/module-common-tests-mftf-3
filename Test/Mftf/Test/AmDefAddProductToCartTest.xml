@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmDefAddProductToCartTest">
+        <annotations>
+            <features value="Compare List" />
+            <stories value="Add Products to Compare List via Customer" />
+            <title value="Add Simple Product To Cart and Assert Product on Cart" />
+            <description value="Add Products To Cart and Asser Count on Cart and Delete Product from Cart" />
+            <severity value="CRITICAL" />
+            <testCaseId value="AmDef-31" />
+            <group value="Amasty" />
+            <group value="Cart" />
+            <group value="AddToCart" />
+            <group value="AmDef" />
+            <group value="AmDefCE" />
+            <group value="AmDefStorefront" />
+        </annotations>
+
+        <before>
+            <createData entity="_defaultCategory" stepKey="createCategory" />
+            <createData entity="SimpleProductByBagImpulseDuffle" stepKey="createSimpleProduct">
+                <requiredEntity createDataKey="createCategory" />
+            </createData>
+            <createData entity="VirtualProductByPrice35" stepKey="createVirtualProduct">
+                <requiredEntity createDataKey="createCategory" />
+            </createData>
+        </before>
+        <after>
+            <deleteData createDataKey="createCategory" stepKey="deleteCategory" />
+            <deleteData createDataKey="createSimpleProduct" stepKey="deleteSimpleProduct" />
+            <deleteData createDataKey="createVirtualProduct" stepKey="deleteVirtualProduct" />
+        </after>
+
+        <actionGroup ref="StorefrontAddProductToCartAssertOnMiniCartActionGroup" stepKey="addVirtualProductToCart">
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontAddProductToCartAssertOnMiniCartActionGroup" stepKey="addSimpleProductToCart">
+            <argument name="valueQty" value="_enterQty2"/>
+            <argument name="product" value="$$createSimpleProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontAssertProductOnCartActionGroup" stepKey="assertVirtualProductAndCountOnCart">
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontAssertProductOnCartActionGroup" stepKey="assertSimpleProductAndCountOnCart">
+            <argument name="productQty" value="_enterQty2"/>
+            <argument name="product" value="$$createSimpleProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontChangeQtyProductInCartActionGroup" stepKey="changeVirtualQty">
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontChangeQtyProductInCartActionGroup" stepKey="changeSimpleQty">
+            <argument name="product" value="$$createSimpleProduct$$" />
+            <argument name="productQty" value="_enterQty3"/>
+        </actionGroup>
+        <actionGroup ref="StorefrontAssertProductOnCartActionGroup" stepKey="assertVirtualAndCountOnCartAfterChange">
+            <argument name="productQty" value="_enterQty2"/>
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontAssertProductOnCartActionGroup" stepKey="assertSimpleAndCountOnCartAfterChange">
+            <argument name="productQty" value="_enterQty3"/>
+            <argument name="product" value="$$createSimpleProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontDeleteProductFromTheCartActionGroup" stepKey="deleteVirtualProduct">
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontAssertNotProductOnCartActionGroup" stepKey="assertNotProductOnCart">
+            <argument name="product" value="$$createVirtualProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontDeleteProductFromTheCartActionGroup" stepKey="deleteSimpleProduct">
+            <argument name="product" value="$$createSimpleProduct$$" />
+        </actionGroup>
+        <actionGroup ref="StorefrontCheckEmptyCartActionGroup" stepKey="assertEmptyCart" />
+    </test>
+</tests>

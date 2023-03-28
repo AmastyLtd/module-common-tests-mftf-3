@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <!-- It is highly recommended to use the original group and not to use this one-->
+    <actionGroup name="AdminFindAndDeleteCustomerActionGroup" extends="AdminDeleteCustomerActionGroup">
+        <waitForPageLoad after="navigateToCustomersPage" stepKey="waitForLoadAfterOpenPage"/>
+    </actionGroup>
+</actionGroups>

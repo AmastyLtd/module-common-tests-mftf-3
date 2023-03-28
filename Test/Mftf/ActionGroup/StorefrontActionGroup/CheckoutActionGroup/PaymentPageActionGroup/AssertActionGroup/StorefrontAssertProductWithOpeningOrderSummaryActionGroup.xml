@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="StorefrontAssertProductWithOpeningOrderSummaryActionGroup">
+        <arguments>
+            <argument name="productName" type="string"/>
+            <argument name="qty" type="string"/>
+            <argument name="price" type="string"/>
+        </arguments>
+        <waitForElementVisible selector="{{CheckoutOrderSummarySection.miniCartTab}}" stepKey="waitTab" />
+        <conditionalClick selector="{{CheckoutOrderSummarySection.miniCartTab}}"
+                          dependentSelector="{{CheckoutOrderSummarySection.miniCartTabClosed}}" visible="true"
+                          stepKey="clickOnOrderSummaryTab"/>
+        <waitForPageLoad stepKey="waitForPageToLoad"/>
+        <see selector="{{CheckoutOrderSummarySection.productItemName}}" userInput="{{productName}}" stepKey="seeProductName"/>
+        <see selector="{{CheckoutOrderSummarySection.productItemQty}}" userInput="{{qty}}" stepKey="seeProductQty"/>
+        <see selector="{{CheckoutOrderSummarySection.productItemPrice}}" userInput="{{price}}" stepKey="seeProductPrice"/>
+    </actionGroup>
+</actionGroups>

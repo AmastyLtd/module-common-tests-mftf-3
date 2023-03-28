@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="MailhogDeleteAllNotificationsActionGroup">
+        <amOnUrl url="{{_ENV.MAILHOG_BASE_URL}}" stepKey="openMailhog"/>
+        <waitForPageLoad stepKey="waitForMailhogPageIsLoaded"/>
+        <click selector="{{MailhogElementsSection.DeleteAllMessagesButton}}" stepKey="clickDeleteAllMessagesButton"/>
+        <waitForElementVisible selector="{{MailhogElementsSection.DeleteAllConfirmationButton}}"
+                               stepKey="waitForConfirmationPopUp"/>
+        <click selector="{{MailhogElementsSection.DeleteAllConfirmationButton}}"
+               stepKey="confirmDeleteAllMessagesButton"/>
+    </actionGroup>
+</actionGroups>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmDefAddAllTypeClearCompareTest" extends="StorefrontClearAllCompareProductsTest">
+        <annotations>
+            <features value="Compare List"/>
+            <stories value="Add Products to Compare and All Clear List via Customer"/>
+            <title value="Add Simple Product To Compare List, Assert Product on Compare List and Clear"/>
+            <description value="Add Products To Compare List and Clear List"/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="AmDef-30"/>
+            <group value="Amasty"/>
+            <group value="CompareList"/>
+            <group value="AmDef"/>
+            <group value="AmDefCE"/>
+            <group value="AmDefStorefront"/>
+        </annotations>
+
+        <before>
+            <magentoCLI command="downloadable:domains:add example.com static.magento.com"
+                        stepKey="addDownloadableDomain"/>
+        </before>
+        <after>
+            <magentoCLI command="downloadable:domains:remove example.com static.magento.com"
+                        stepKey="removeDownloadableDomain"/>
+        </after>
+
+        <remove keyForRemoval="amOnMyAccountDashboard1"/>
+        <remove keyForRemoval="clearComparedProducts1"/>
+        <actionGroup ref="StorefrontOpenMyAccountPageActionGroup" stepKey="openAccountDashboard"/>
+        <actionGroup ref="StorefrontCompareListClearActionGroup" stepKey="clearComparedProducts"/>
+    </test>
+</tests>

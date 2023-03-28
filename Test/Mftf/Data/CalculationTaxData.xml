@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataProfileSchema.xsd">
+
+    <entity name="taxIncludeCatalogAndShipping" extends="defaultTaxSetting" type="calculationTax">
+        <data key="taxClassForShipping">2</data>
+        <data key="taxClassForProduct">2</data>
+        <data key="calculationCatalogPrices">1</data>
+        <data key="calculationShippingPrices">1</data>
+    </entity>
+
+    <entity name="taxExcludeCatalogAndShipping" extends="defaultTaxSetting" type="calculationTax">
+        <data key="taxClassForShipping">2</data>
+        <data key="taxClassForProduct">2</data>
+        <data key="calculationCatalogPrices">0</data>
+        <data key="calculationShippingPrices">0</data>
+    </entity>
+
+    <entity name="taxExcludeCatalogIncludeShipping" extends="defaultTaxSetting" type="calculationTax">
+        <data key="taxClassForShipping">2</data>
+        <data key="taxClassForProduct">2</data>
+        <data key="calculationCatalogPrices">0</data>
+        <data key="calculationShippingPrices">1</data>
+    </entity>
+
+    <entity name="taxIncludeCatalogExcludeShipping" extends="defaultTaxSetting" type="calculationTax">
+        <data key="taxClassForShipping">2</data>
+        <data key="taxClassForProduct">2</data>
+        <data key="calculationCatalogPrices">1</data>
+        <data key="calculationShippingPrices">0</data>
+    </entity>
+
+    <entity name="defaultTaxSetting" type="configurationTax">
+        <data key="taxClassForShipping">0</data>
+        <data key="taxClassForProduct">2</data>
+        <data key="calculationCatalogPrices">0</data>
+        <data key="calculationShippingPrices">0</data>
+        <data key="calculationDiscountTax">0</data>
+        <data key="calculationApplyTaxWithDiscount">1</data>
+        <data key="displayCatalogPrices">1</data>
+        <data key="displayShippingPrices">1</data>
+        <data key="displayCartPrices">1</data>
+        <data key="displayCartSubtotal">1</data>
+        <data key="displayOrderPrices">1</data>
+        <data key="displayOrderSubtotal">1</data>
+    </entity>
+
+    <entity name="crossBorderValues" type="configurationTax">
+        <data key="crossBorderEnable">Yes</data>
+        <data key="crossBorderDisable">No</data>
+    </entity>
+
+    <entity name="taxRateForArizona" type="taxRate">
+        <data key="code" unique="suffix">US-AZ-AllZip-</data>
+        <data key="tax_country_id">US</data>
+        <data key="tax_region_id">4</data>
+        <data key="tax_postcode">*</data>
+        <data key="zip_is_range">0</data>
+        <data key="rate">10</data>
+    </entity>
+    <entity name="taxRuleWithArizona" type="taxRule">
+        <data key="code" unique="suffix">Tax Rule Tests Am </data>
+        <data key="position">0</data>
+        <data key="priority">0</data>
+    </entity>
+
+    <entity name="taxRateForCalifornia" type="taxRate">
+        <data key="code" unique="suffix">US-CA-AllZip-</data>
+        <data key="tax_country_id">US</data>
+        <data key="tax_region_id">12</data>
+        <data key="tax_postcode">*</data>
+        <data key="zip_is_range">0</data>
+        <data key="rate">5</data>
+    </entity>
+    <entity name="taxRuleWithCalifornia" type="taxRule">
+        <data key="code" unique="suffix">Tax Rule Tests Am </data>
+        <data key="position">0</data>
+        <data key="priority">0</data>
+    </entity>
+</entities>

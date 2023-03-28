@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="AdminConfigBaseUrlActionGroup" extends="SwitchToTheNewStoreViewActionGroup">
+        <arguments>
+            <argument name="siteCode"/>
+        </arguments>
+        <amOnPage url="{{WebConfigurationPage.url}}" before="scrollToUp" stepKey="openWebConfigurationPage"/>
+        <conditionalClick selector="{{AdminConfigurationsWebSection.BaseUrlsTab}}"
+                          dependentSelector="{{AdminConfigurationsWebSection.BaseUrl}}" visible="false"
+                          stepKey="openBaseUrlTab"/>
+        <grabValueFrom selector="{{AdminConfigurationsWebSection.BaseUrl}}" stepKey="grabBaseUrl"/>
+        <uncheckOption selector="{{AdminConfigurationsWebSection.BaseUrlUseDefault}}" stepKey="uncheckBaseUrlUseDefault"/>
+        <executeJS function="if('{$grabBaseUrl}'.includes('docker')){return '--'} else {return '---'}"
+                   stepKey="getUrlType"/>
+        <executeJS function="return '{$grabBaseUrl}'.replace(/[a-z]+:\/\//, '{$grabBaseUrl}'.match(/[a-z]+:\/\//)+'{{siteCode}}{$getUrlType}')"
+                   stepKey="addCodeBaseUrl"/>
+        <fillField selector="{{AdminConfigurationsWebSection.BaseUrl}}" userInput="{$addCodeBaseUrl}"
+                   stepKey="addSiteCodeToBaseUrl"/>
+        <conditionalClick selector="{{AdminConfigurationsWebSection.SecureBaseUrlsTab}}"
+                          dependentSelector="{{AdminConfigurationsWebSection.SecureBaseUrl}}" visible="false"
+                          stepKey="openSecureBaseUrlTab"/>
+        <grabValueFrom selector="{{AdminConfigurationsWebSection.SecureBaseUrl}}" stepKey="grabSecureBaseUrl"/>
+        <uncheckOption selector="{{AdminConfigurationsWebSection.SecureBaseUrlUseDefault}}"
+                       stepKey="uncheckSecureBaseUrlUseDefault"/>
+        <executeJS function="return '{$grabSecureBaseUrl}'.replace(/[a-z]+:\/\//, '{$grabSecureBaseUrl}'.match(/[a-z]+:\/\//)+'{{siteCode}}{$getUrlType}')"
+                   stepKey="addCodeSecureBaseUrl"/>
+        <fillField selector="{{AdminConfigurationsWebSection.SecureBaseUrl}}" userInput="{$addCodeSecureBaseUrl}"
+                   stepKey="addSiteCodeToSecureBaseUrl"/>
+        <setCookie userInput="setBaseUrl" value="{$addCodeBaseUrl}" stepKey="setBaseUrl"/>
+        <setCookie userInput="setSecureBaseUrl" value="{$addCodeSecureBaseUrl}" stepKey="setSecureBaseUrl"/>
+        <click selector="{{AdminConfigurationsAllSection.Save}}" stepKey="saveChange"/>
+        <waitForPageLoad stepKey="waitForPageLoadAfterSave"/>
+    </actionGroup>
+</actionGroups>
+
+
