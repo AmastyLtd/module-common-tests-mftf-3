@@ -35,7 +35,7 @@
             <actionGroup ref="AdminCreateStoreViewActionGroup" after="loginAsAdmin" stepKey="createStoreView">
                 <argument name="customStore" value="staticStore"/>
             </actionGroup>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="indexer:reindex" arguments="inventory" stepKey="reindex"/>
             <magentoCLI command="cache:clean" stepKey="cleanCache"/>
         </before>
         <after>

@@ -27,7 +27,7 @@
             </actionGroup>
         </before>
         <after>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="indexer:reindex" arguments="inventory catalog_product_attribute" stepKey="reindex"/>
         </after>
 
         <remove keyForRemoval="createProduct" />

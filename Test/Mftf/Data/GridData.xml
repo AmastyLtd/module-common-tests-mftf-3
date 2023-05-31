@@ -54,4 +54,10 @@
         <data key="selectAllPage">Select All on This Page</data>
         <data key="deselectAllPage">Deselect All on This Page</data>
     </entity>
+
+    <entity name="refreshStatisticsActions" type="gridActions">
+        <data key="refreshRecent">Refresh Statistics for the Last Day</data>
+        <data key="refreshLifetime">Refresh Lifetime Statistics</data>
+    </entity>
+
 </entities>
