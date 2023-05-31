@@ -55,11 +55,11 @@
                  selector="//div[@data-index='promo_banners_highlights']//textarea[@name='extension_attributes[banner_product_sku]']"/>
         <element name="CategoriesSelect" type="select" selector=".admin__field-control"/>
         <element name="HighlightPromotionTopBannerTab" type="button"
-                 selector="//div[@data-index='top_banner']/div[@class='fieldset-wrapper-title']"/>
+                 selector="//div[@data-index='top_banner']/div[@class='fieldset-wrapper-title']/strong"/>
         <element name="HighlightPromotionAfterBannerTab" type="button"
-                 selector="//div[@data-index='after_description_banner']/div[@class='fieldset-wrapper-title']"/>
+                 selector="//div[@data-index='after_description_banner']/div[@class='fieldset-wrapper-title']/strong"/>
         <element name="HighlightPromotionLabelBannerTab" type="button"
-                 selector="//div[@data-index='product_banner']/div[@class='fieldset-wrapper-title']"/>
+                 selector="//div[@data-index='product_banner']/div[@class='fieldset-wrapper-title']/strong"/>
         <element name="TopBannerUpload" type="button" selector="//div[@data-index='top_banner']//input[@type='file']"/>
         <element name="AfterBannerUpload" type="button"
                  selector="//div[@data-index='after_description_banner']//input[@type='file']"/>

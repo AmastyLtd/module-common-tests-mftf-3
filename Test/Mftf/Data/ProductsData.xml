@@ -348,6 +348,12 @@
         <requiredEntity type="custom_attribute">CustomAttributeProductAttribute</requiredEntity>
     </entity>
 
+    <entity name="specialProductPrice34" type="catalogSpecialPrice">
+        <data key="price">34.00</data>
+        <data key="store_id">0</data>
+        <var key="sku" entityType="product2" entityKey="sku" />
+    </entity>
+
     <entity name="configurableProductOptions" type="configurable_option">
         <data key="optionOne">option1</data>
         <data key="optionTwo">option2</data>

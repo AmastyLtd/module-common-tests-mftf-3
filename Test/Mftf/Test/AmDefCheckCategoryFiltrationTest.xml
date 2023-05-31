@@ -57,7 +57,7 @@
             <actionGroup ref="AdminAssignCategoryToProductAndSaveActionGroup" stepKey="assignCategoryToProductTwo">
                 <argument name="categoryName" value="$createCategory.name$"/>
             </actionGroup>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="indexer:reindex" arguments="inventory catalog_product_attribute" stepKey="reindex"/>
         </before>
         <after>
             <!-- Delete Created Data After Test -->
@@ -65,7 +65,7 @@
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <deleteData createDataKey="createFirstProduct" stepKey="deleteFirstProduct"/>
             <deleteData createDataKey="createSecondProduct" stepKey="deleteSecondProduct"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="indexer:reindex" arguments="inventory catalog_product_attribute" stepKey="reindex"/>
         </after>
 
         <!-- Choose Filter by Price and Assert Products On Category -->

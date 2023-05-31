@@ -34,6 +34,12 @@
                  selector="//div[contains(@data-role, 'grid-wrapper')]/table/thead/tr//span[contains(text(), '{{columnName}}')]/parent::th"/>
         <element name="DefSortingState" type="button" parameterized="true"
                  selector="//span[contains(text(), '{{columnName}}')]/parent::th[not(contains(@class, '_descend'))]/parent::tr/parent::thead/parent::table/parent::div[contains(@data-role, 'grid-wrapper')]"/>
+        <element name="Submit" type="button" selector="//button[@title='Submit']"/>
+        <element name="MassActionsSelect" type="select" parameterized="true"
+                 selector="//select[contains(@id, 'massaction-mass-select')]//option[contains(string(), '{{action}}')]"/>
+        <element name="MassActions" type="select"
+                 selector="//select[contains(@id, 'mass-select')]"/>
+        <element name="ActionsSelect" type="select" selector="//select[contains(@id, 'massaction-select')]"/>
     </section>
 </sections>
 

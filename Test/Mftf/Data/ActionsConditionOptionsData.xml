@@ -62,4 +62,14 @@
         <data key="optionsValue">!=</data>
     </entity>
 
+    <entity name="_shippingPostcode" type="actionsConditionsOptions">
+        <data key="optionsText">Shipping Postcode</data>
+        <data key="optionsValue">postcode</data>
+    </entity>
+
+    <entity name="_gender" type="actionsConditionsOptions">
+        <data key="optionsText">Gender</data>
+        <data key="optionsValue">gender</data>
+    </entity>
+
 </entities>

@@ -31,5 +31,6 @@
                  selector="//input[@id='{{shippingMethodsName}}']"/>
         <element name="StoreCredit" type="button" timeout="10" selector="//label[@for='return_to_store_credit']" />
         <element name="StoreCreditChecked" type="radio" selector="//input[@id='return_to_store_credit'][@checked]" />
+        <element name="ShippingMethod" type="button" parameterized="true" selector="#s_method_{{methodName}}"/>
     </section>
 </sections>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="AdminSelectAndSubmitActionsGridActionGroup">
+        <arguments>
+            <argument name="massAction" defaultValue="optionsMultiCheck.selectAll"/>
+            <argument name="action"/>
+        </arguments>
+        <click selector="{{AdminGridsSection.MassActions}}" stepKey="clickMassActions"/>
+        <click selector="{{AdminGridsSection.MassActionsSelect(massAction)}}"
+               stepKey="selectMassAction"/>
+        <selectOption selector="{{AdminGridsSection.ActionsSelect}}" userInput="{{action}}"
+                      stepKey="selectAction"/>
+        <click selector="{{AdminGridsSection.Submit}}" stepKey="submit"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <conditionalClick selector="{{AdminPageSection.ConfirmAction}}"
+                          dependentSelector="{{AdminPageSection.ConfirmAction}}"
+                          visible="true" stepKey="confirmActionIfNeeded" />
+    </actionGroup>
+</actionGroups>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+
+    <actionGroup name="AdminOrderOpenShippingMethodActionGroup">
+        <arguments>
+            <argument name="methodName" defaultValue="FlatRateMethod.shippingMethodsNameOnCheckout"/>
+        </arguments>
+        <waitForElementVisible selector="{{AdminInvoicePaymentShippingSection.getShippingMethod}}"
+                               stepKey="waitForShippingMethods"/>
+        <click selector="{{AdminInvoicePaymentShippingSection.getShippingMethod}}" stepKey="openShippingMethod"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+        <conditionalClick selector="{{AdminInvoicePaymentShippingSection.getShippingMethod}}"
+                          dependentSelector="{{AdminCreateOrderSection.ShippingMethod(methodName)}}" visible="false"
+                          stepKey="openShippingMethodSecondTime"/>
+        <waitForPageLoad stepKey="waitForPageLoadSecondTime"/>
+    </actionGroup>
+</actionGroups>

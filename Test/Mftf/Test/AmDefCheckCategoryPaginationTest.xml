@@ -62,8 +62,6 @@
             <createData entity="SimpleProductByWatchClamber" stepKey="createFourteenProduct">
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:clean" stepKey="cleanClean"/>
         </before>
         <after>
             <!-- Delete Created Data After Test -->
